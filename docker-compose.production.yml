@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  proxy:
+    image: rt_proxy
+    ports:
+      - ${PROXY_PORT}:8080
+    volumes:
+      - ../backend:/usr/src/project
+      - backend_static_django:/usr/src/project/static_django
+    depends_on:
+      - backend
+      - frontend
+volumes:
+  backend_static_django:
